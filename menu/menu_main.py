@@ -3,6 +3,9 @@ from src.modelos.modelo_groq import ModeloGroq
 from src.modelos.modelo_local import ModeloLocal
 from src.modelos.modelo_phi_mini import ModeloLocal
 from src.modelos.prompt_1 import prompt_1
+from src.modelos.prompt_2 import Prompt_02
+from src.modelos.modelo_roles import Prompt_roles
+from src.modelos.modelo_conectar import Prompt_Conexion
 
 import os
 from rich.console import Console
@@ -29,6 +32,8 @@ class MenuPrincipal:
         print("4. Módelo Phi Mini")
         print("5. Prompt 1")
         print("6. Prompt 2")
+        print("7. Prompt roles")
+        print("8. Prompt Conexión")
         print("0. Salir")
 
     def ejecutar_opcion(self):
@@ -85,6 +90,20 @@ class MenuPrincipal:
                 respuesta = modelo_prompt_2.generar_respuestas()
                 print("Respuesta del modelo Prompt 2:")
                 self.console.print(Markdown(respuesta))
+
+            elif self.opcion == "7":
+                prompt_roles = Prompt_roles()
+                respuesta = prompt_roles.generar_respuestas()
+                print("Respuesta del modelo Prompt Roles:")
+                self.console.print(Markdown(respuesta))
+
+            elif self.opcion == "8":
+                from src.modelos.modelo_conectar import Prompt_Conexion
+                prompt_conexion = Prompt_Conexion()
+                respuesta = prompt_conexion.generar_respuestas()
+                print("Respuesta del modelo Prompt Conexión:")
+                self.console.print(Markdown(respuesta))
+
 
             elif self.opcion == "0":
                 print("Saliendo del programa...")
